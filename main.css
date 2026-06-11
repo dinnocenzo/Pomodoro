@@ -1,0 +1,272 @@
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a2e;
+  color: #eaeaea;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ── App Wrapper ──────────────────────────────────────────────────────────── */
+#app {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ── Timer Section ────────────────────────────────────────────────────────── */
+#time {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+#session-label {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #e94560;
+  margin-bottom: 12px;
+}
+
+#timer-display {
+  font-size: 6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+#pomodoro-count {
+  font-size: 0.85rem;
+  color: #a0a0b0;
+  margin-bottom: 28px;
+}
+
+/* ── Control Buttons ──────────────────────────────────────────────────────── */
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+#controls button {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, opacity 0.2s;
+}
+
+#btn-start {
+  background: #e94560;
+  color: #fff;
+}
+
+#btn-start:hover:not(:disabled) {
+  background: #c73652;
+  transform: translateY(-1px);
+}
+
+#btn-pause {
+  background: #0f3460;
+  color: #eaeaea;
+}
+
+#btn-pause:hover:not(:disabled) {
+  background: #1a4f8a;
+  transform: translateY(-1px);
+}
+
+#btn-reset {
+  background: #2a2a4a;
+  color: #eaeaea;
+}
+
+#btn-reset:hover {
+  background: #3a3a5a;
+  transform: translateY(-1px);
+}
+
+#controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Session-type Buttons ─────────────────────────────────────────────────── */
+#session-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.session-btn {
+  padding: 7px 18px;
+  border: 2px solid #e94560;
+  border-radius: 20px;
+  background: transparent;
+  color: #e94560;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.session-btn:hover {
+  background: #e94560;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.session-btn.active {
+  background: #e94560;
+  color: #fff;
+}
+
+/* ── Task Section ─────────────────────────────────────────────────────────── */
+.tasks-container {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.form form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+#it {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  background: #1a1a2e;
+  color: #eaeaea;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#it:focus {
+  border-color: #e94560;
+}
+
+#bAdd {
+  padding: 10px 20px;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+#bAdd:hover {
+  background: #c73652;
+  transform: translateY(-1px);
+}
+
+/* ── Task Items ───────────────────────────────────────────────────────────── */
+#tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #1a1a2e;
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid #0f3460;
+  transition: border-color 0.2s;
+}
+
+.task:hover {
+  border-color: #e94560;
+}
+
+.task--done {
+  opacity: 0.55;
+}
+
+.task .title {
+  flex: 1;
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.task .completed {
+  flex-shrink: 0;
+}
+
+.start-button {
+  padding: 6px 14px;
+  background: transparent;
+  border: 2px solid #e94560;
+  border-radius: 6px;
+  color: #e94560;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.start-button:hover {
+  background: #e94560;
+  color: #fff;
+}
+
+.done {
+  font-size: 0.82rem;
+  color: #4caf82;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 420px) {
+  #timer-display {
+    font-size: 4rem;
+  }
+
+  #time {
+    padding: 28px 16px;
+  }
+
+  .tasks-container {
+    padding: 20px 16px;
+  }
+}
